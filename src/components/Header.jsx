@@ -109,6 +109,17 @@ const Header = () => {
             transition={{ type: 'tween', duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 bg-white z-40 md:hidden flex flex-col justify-center px-12"
           >
+            {/* Close button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-8 right-8 p-2 text-gray-900 hover:text-blue-900 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
             <nav className="flex flex-col space-y-10">
               {navLinks.map((link, i) => (
                 <motion.div
