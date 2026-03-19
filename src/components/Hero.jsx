@@ -20,9 +20,10 @@ const Hero = () => {
           className="w-full h-full object-cover" 
           loading="eager"
         />
-        {/* Multilayered Overlay for High-End Text Legibility */}
-        <div className="absolute inset-0 bg-[#0a1928]/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1928]/80 via-transparent to-[#0a1928]" />
+        {/* Light overlay for text readability - keeps image visible but ensures contrast */}
+        <div className="absolute inset-0 bg-white/40" />
+        {/* Subtle noise texture overlay (optional) */}
+        <div className="absolute inset-0 opacity-5 mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.2\'/%3E%3C/svg%3E")' }} />
       </motion.div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto">
@@ -32,21 +33,21 @@ const Hero = () => {
           transition={{ duration: 1.2, delay: 0.5 }}
           className="flex flex-col items-center text-center"
         >
-          {/* Subtle Sector Tag */}
+          {/* Elegant top label */}
           <motion.span 
-            initial={{ opacity: 0, tracking: "0.2em" }}
-            animate={{ opacity: 1, tracking: "0.5em" }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="text-[10px] uppercase text-amber-400/80 mb-8 font-bold"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-blue-900/80 mb-4 md:mb-6 font-light"
           >
-            Strategic Acquisition
+            Ozi Tech Properties • Port Harcourt
           </motion.span>
 
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-extralight tracking-tighter text-white mb-10 leading-[0.85] max-w-5xl">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-extralight tracking-tighter text-gray-900 mb-6 leading-[0.85] max-w-5xl">
             {title}
           </h1>
 
-          <p className="text-base sm:text-lg text-white/70 mb-14 max-w-2xl mx-auto font-light leading-relaxed tracking-wide italic">
+          <p className="text-base sm:text-lg text-gray-800 mb-10 max-w-2xl mx-auto font-light leading-relaxed tracking-wide italic">
             {subtitle}
           </p>
 
@@ -57,30 +58,44 @@ const Hero = () => {
           >
             <Link 
               to={ctaLink} 
-              className="relative px-14 py-6 overflow-hidden rounded-full bg-amber-400 text-[#0a1928] transition-all duration-700 group flex items-center gap-3"
+              className="relative px-10 sm:px-14 py-5 sm:py-6 overflow-hidden rounded-full bg-blue-900 text-white transition-all duration-700 group flex items-center gap-3 shadow-lg hover:shadow-xl"
             >
-              <span className="relative z-10 text-[11px] font-bold tracking-[0.3em] uppercase">
+              <span className="relative z-10 text-[10px] sm:text-[11px] font-bold tracking-[0.3em] uppercase">
                 {ctaText}
               </span>
-              {/* Refined button hover effect */}
-              <div className="absolute inset-0 w-full h-full bg-amber-300 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              {/* Refined button hover effect - lighter blue slide */}
+              <div className="absolute inset-0 w-full h-full bg-blue-700 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </Link>
+          </motion.div>
+
+          {/* Decorative element: subtle floating line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="absolute bottom-32 left-1/2 -translate-x-1/2 hidden md:block"
+          >
+            <div className="flex items-center gap-4">
+              <span className="h-[1px] w-12 bg-blue-900/20" />
+              <span className="text-[8px] tracking-[0.4em] uppercase text-blue-900/40 font-light">Explore</span>
+              <span className="h-[1px] w-12 bg-blue-900/20" />
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Aesthetic Scroll Anchor */}
+      {/* Aesthetic Scroll Anchor - adjusted for mobile */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        <div className="w-[1px] h-20 bg-gradient-to-b from-amber-400/40 to-transparent relative overflow-hidden">
+        <div className="w-[1px] h-16 bg-gradient-to-b from-blue-900/40 to-transparent relative overflow-hidden">
           <motion.div 
             animate={{ y: [-40, 80] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-amber-400/80"
+            className="absolute top-0 left-0 w-full h-1/2 bg-blue-900/80"
           />
         </div>
       </motion.div>

@@ -26,19 +26,19 @@ const Header = () => {
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? 'bg-[#0a1928]/90 backdrop-blur-xl py-3' : 'bg-transparent py-6'
+        scrolled ? 'bg-white/90 backdrop-blur-xl py-3 shadow-sm' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="group flex items-center space-x-3">
-          <img src={siteConfig.logo} alt={siteConfig.companyName} className="h-8 md:h-9 w-auto brightness-0 invert" />
+          <img src={siteConfig.logo} alt={siteConfig.companyName} className="h-8 md:h-9 w-auto" />
           <div className="flex flex-col">
-            <span className="text-lg font-extralight tracking-[0.3em] uppercase text-white leading-none">
+            <span className={`text-lg font-extralight tracking-[0.3em] uppercase leading-none ${scrolled ? 'text-gray-900' : 'text-gray-900'}`}>
               {siteConfig.companyName}
             </span>
-            <span className="text-[7px] tracking-[0.5em] uppercase text-amber-400/40 mt-1.5 font-bold">
-              Maitama • Wuse • Asokoro • Abuja
+            <span className="text-[7px] tracking-[0.5em] uppercase text-blue-900/40 mt-1.5 font-bold">
+              Old GRA • New GRA • Trans Amadi • Port Harcourt
             </span>
           </div>
         </Link>
@@ -51,8 +51,8 @@ const Header = () => {
               to={link.path} 
               className={`text-[10px] uppercase tracking-[0.25em] transition-all duration-300 font-medium ${
                 location.pathname === link.path 
-                  ? 'text-amber-400 border-b border-amber-400/40 pb-1' 
-                  : 'text-white/50 hover:text-amber-400'
+                  ? 'text-blue-900 border-b border-blue-900/40 pb-1' 
+                  : 'text-gray-600 hover:text-blue-900'
               }`}
             >
               {link.name}
@@ -60,7 +60,7 @@ const Header = () => {
           ))}
           <Link 
             to="/contact" 
-            className="px-8 py-2.5 border border-amber-400/30 rounded-full text-[9px] uppercase tracking-[0.3em] bg-amber-400 text-[#0a1928] hover:bg-transparent hover:text-amber-400 hover:border-amber-400 transition-all duration-500 font-bold"
+            className="px-8 py-2.5 border border-blue-900/30 rounded-full text-[9px] uppercase tracking-[0.3em] bg-blue-900 text-white hover:bg-transparent hover:text-blue-900 hover:border-blue-900 transition-all duration-500 font-bold"
           >
             Enquire
           </Link>
@@ -68,12 +68,12 @@ const Header = () => {
 
         {/* Mobile Menu Trigger */}
         <button 
-          className="md:hidden relative z-50 p-2 text-white" 
+          className="md:hidden relative z-50 p-2 text-gray-900" 
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="flex flex-col gap-2 w-6">
-            <span className={`h-[1px] w-full bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
-            <span className={`h-[1px] w-full bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
+            <span className={`h-[1px] w-full bg-gray-900 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
+            <span className={`h-[1px] w-full bg-gray-900 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
           </div>
         </button>
       </div>
@@ -86,7 +86,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ type: 'tween', duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-[#0a1928] z-40 md:hidden flex flex-col justify-center px-12"
+            className="fixed inset-0 bg-white z-40 md:hidden flex flex-col justify-center px-12"
           >
             <nav className="flex flex-col space-y-10">
               {navLinks.map((link, i) => (
@@ -99,7 +99,7 @@ const Header = () => {
                   <Link 
                     to={link.path} 
                     onClick={() => setIsOpen(false)}
-                    className="text-5xl font-extralight tracking-tighter text-white italic hover:text-amber-400 transition-colors"
+                    className="text-5xl font-extralight tracking-tighter text-gray-900 italic hover:text-blue-900 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -107,13 +107,13 @@ const Header = () => {
               ))}
             </nav>
             
-            <div className="mt-20 pt-10 border-t border-amber-400/20">
-              <p className="text-[10px] tracking-[0.4em] uppercase text-amber-400/60 mb-6 font-bold">Contact Our Team</p>
-              <p className="text-xl text-white font-light tracking-widest">{siteConfig.phone}</p>
+            <div className="mt-20 pt-10 border-t border-blue-900/20">
+              <p className="text-[10px] tracking-[0.4em] uppercase text-blue-900/60 mb-6 font-bold">Contact Our Team</p>
+              <p className="text-xl text-gray-900 font-light tracking-widest">{siteConfig.phone}</p>
               <div className="mt-8 flex gap-6">
-                <span className="text-[10px] uppercase tracking-widest text-amber-400/40">Maitama</span>
-                <span className="text-[10px] uppercase tracking-widest text-amber-400/40">Wuse</span>
-                <span className="text-[10px] uppercase tracking-widest text-amber-400/40">Asokoro</span>
+                <span className="text-[10px] uppercase tracking-widest text-blue-900/40">Old GRA</span>
+                <span className="text-[10px] uppercase tracking-widest text-blue-900/40">New GRA</span>
+                <span className="text-[10px] uppercase tracking-widest text-blue-900/40">Trans Amadi</span>
               </div>
             </div>
           </motion.div>
