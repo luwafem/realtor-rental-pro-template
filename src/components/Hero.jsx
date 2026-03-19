@@ -20,9 +20,9 @@ const Hero = () => {
           className="w-full h-full object-cover" 
           loading="eager"
         />
-        {/* Light overlay for text readability - keeps image visible but ensures contrast */}
-        <div className="absolute inset-0 bg-white/40" />
-        {/* Subtle noise texture overlay (optional) */}
+        {/* Dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-black/50" />
+        {/* Subtle noise texture overlay */}
         <div className="absolute inset-0 opacity-5 mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.2\'/%3E%3C/svg%3E")' }} />
       </motion.div>
 
@@ -38,16 +38,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-blue-900/80 mb-4 md:mb-6 font-light"
+            className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-white/70 mb-4 md:mb-6 font-light"
           >
             Ozi Tech Properties • Port Harcourt
           </motion.span>
 
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-extralight tracking-tighter text-gray-900 mb-6 leading-[0.85] max-w-5xl">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-extralight tracking-tighter text-white mb-6 leading-[0.85] max-w-5xl">
             {title}
           </h1>
 
-          <p className="text-base sm:text-lg text-gray-800 mb-10 max-w-2xl mx-auto font-light leading-relaxed tracking-wide italic">
+          <p className="text-base sm:text-lg text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed tracking-wide italic">
             {subtitle}
           </p>
 
@@ -76,9 +76,9 @@ const Hero = () => {
             className="absolute bottom-32 left-1/2 -translate-x-1/2 hidden md:block"
           >
             <div className="flex items-center gap-4">
-              <span className="h-[1px] w-12 bg-blue-900/20" />
-              <span className="text-[8px] tracking-[0.4em] uppercase text-blue-900/40 font-light">Explore</span>
-              <span className="h-[1px] w-12 bg-blue-900/20" />
+              <span className="h-[1px] w-12 bg-white/20" />
+              <span className="text-[8px] tracking-[0.4em] uppercase text-white/40 font-light">Explore</span>
+              <span className="h-[1px] w-12 bg-white/20" />
             </div>
           </motion.div>
         </motion.div>
@@ -91,11 +91,11 @@ const Hero = () => {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        <div className="w-[1px] h-16 bg-gradient-to-b from-blue-900/40 to-transparent relative overflow-hidden">
+        <div className="w-[1px] h-16 bg-gradient-to-b from-white/40 to-transparent relative overflow-hidden">
           <motion.div 
             animate={{ y: [-40, 80] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-blue-900/80"
+            className="absolute top-0 left-0 w-full h-1/2 bg-white/80"
           />
         </div>
       </motion.div>

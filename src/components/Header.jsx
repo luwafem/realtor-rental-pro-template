@@ -23,6 +23,9 @@ const Header = () => {
     { name: 'Contact', path: '/contact' },
   ]
 
+  // Determine if we're on the homepage and not scrolled (hero with dark overlay)
+  const isHomeTop = location.pathname === '/' && !scrolled
+
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -32,12 +35,22 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="group flex items-center space-x-3">
-          <img src={siteConfig.logo} alt={siteConfig.companyName} className="h-8 md:h-9 w-auto" />
+          <img 
+            src={siteConfig.logo} 
+            alt={siteConfig.companyName} 
+            className={`h-8 md:h-9 w-auto transition-all duration-300 ${
+              isHomeTop ? 'brightness-0 invert' : ''
+            }`} 
+          />
           <div className="flex flex-col">
-            <span className={`text-lg font-extralight tracking-[0.3em] uppercase leading-none ${scrolled ? 'text-gray-900' : 'text-gray-900'}`}>
+            <span className={`text-lg font-extralight tracking-[0.3em] uppercase leading-none transition-colors duration-300 ${
+              isHomeTop ? 'text-white' : 'text-gray-900'
+            }`}>
               {siteConfig.companyName}
             </span>
-            <span className="text-[7px] tracking-[0.5em] uppercase text-blue-900/40 mt-1.5 font-bold">
+            <span className={`text-[7px] tracking-[0.5em] uppercase mt-1.5 font-bold transition-colors duration-300 ${
+              isHomeTop ? 'text-white/40' : 'text-blue-900/40'
+            }`}>
               Old GRA • New GRA • Trans Amadi • Port Harcourt
             </span>
           </div>
@@ -52,7 +65,9 @@ const Header = () => {
               className={`text-[10px] uppercase tracking-[0.25em] transition-all duration-300 font-medium ${
                 location.pathname === link.path 
                   ? 'text-blue-900 border-b border-blue-900/40 pb-1' 
-                  : 'text-gray-600 hover:text-blue-900'
+                  : isHomeTop
+                    ? 'text-white/70 hover:text-white'
+                    : 'text-gray-600 hover:text-blue-900'
               }`}
             >
               {link.name}
@@ -60,7 +75,11 @@ const Header = () => {
           ))}
           <Link 
             to="/contact" 
-            className="px-8 py-2.5 border border-blue-900/30 rounded-full text-[9px] uppercase tracking-[0.3em] bg-blue-900 text-white hover:bg-transparent hover:text-blue-900 hover:border-blue-900 transition-all duration-500 font-bold"
+            className={`px-8 py-2.5 border rounded-full text-[9px] uppercase tracking-[0.3em] font-bold transition-all duration-500 ${
+              isHomeTop
+                ? 'border-white/30 bg-transparent text-white hover:bg-white hover:text-blue-900'
+                : 'border-blue-900/30 bg-blue-900 text-white hover:bg-transparent hover:text-blue-900'
+            }`}
           >
             Enquire
           </Link>
@@ -68,12 +87,14 @@ const Header = () => {
 
         {/* Mobile Menu Trigger */}
         <button 
-          className="md:hidden relative z-50 p-2 text-gray-900" 
+          className={`md:hidden relative z-50 p-2 transition-colors duration-300 ${
+            isHomeTop ? 'text-white' : 'text-gray-900'
+          }`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="flex flex-col gap-2 w-6">
-            <span className={`h-[1px] w-full bg-gray-900 transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
-            <span className={`h-[1px] w-full bg-gray-900 transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
+            <span className={`h-[1px] w-full bg-current transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
+            <span className={`h-[1px] w-full bg-current transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
           </div>
         </button>
       </div>

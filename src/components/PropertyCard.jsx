@@ -17,7 +17,6 @@ const PropertyCard = ({ property }) => {
             alt={name} 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-60" />
           
           {/* Price Tag - with blue accent */}
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md border border-blue-900/20 px-4 py-2 rounded-full shadow-sm">

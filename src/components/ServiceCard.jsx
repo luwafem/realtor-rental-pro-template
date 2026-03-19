@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
     <motion.div 
       whileHover={{ y: -8 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col bg-white border border-gray-200 overflow-hidden rounded-sm transition-all duration-700 hover:border-blue-900/30 hover:shadow-md"
+      className="group relative flex flex-col bg-white border border-gray-200 overflow-hidden rounded-3xl transition-all duration-700 hover:border-blue-900/30 hover:shadow-md"
     >
       <Link to={`/services/${id}`} className="block h-full">
         {/* Image Container with Ken Burns-style Zoom */}
@@ -19,7 +19,6 @@ const ServiceCard = ({ service }) => {
             className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105" 
           />
           {/* Light scrim overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-80" />
           
           {/* Subtle Price/Guidance Badge - Blue Accent */}
           <div className="absolute top-6 right-6">
